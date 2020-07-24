@@ -1,0 +1,2 @@
+This WebApp should allow for users to login and type statements which can be voted for as right or wrong by other users.
+Each user can only vote once for each statement, which will increase the number of right or wrong votes respectively.
