@@ -1,0 +1,174 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    background: rgb(1,1,38);
+    background: linear-gradient(180deg, rgba(1,1,38,1) 8%, rgba(18,46,51,1) 65%, rgba(28,93,97,1) 95%) fixed;
+    background-color: black;
+}
+
+h1 {
+    color: rgb(154, 211, 228);
+    
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+.banner {
+    display: flex;
+    
+    padding-left:34%;
+    padding-right: 25%;
+
+    background-color: rgb(20, 43, 87, 0.3);
+}
+
+.posts_container {
+    display: flex;
+    float: center;
+    position: relative;
+
+    border: 5px inset rgb(35, 109, 87);
+    border-radius: 25px;
+    
+    margin-top: 80px;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-left: 25%;
+    
+
+    background-color: rgba(230, 230, 250, 0.150);
+}
+
+.post_div {
+    display: ruby;
+    float: center;
+    position: static;
+
+    width: 40%;
+
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    padding-right: 30px;
+    padding-left: 30px;
+
+    border-left: 2px solid rgb(35, 109, 87);
+    border-right: 5px ridge rgb(35, 109, 87);
+    border-top: 1px solid rgb(35, 109, 87);
+    border-bottom: 5px ridge rgb(35, 109, 97);
+    border-radius: 15%;
+
+    color: rgb(3, 14, 3);
+    
+    background: rgb(35,109,87);
+    background: radial-gradient(ellipse at left top, rgba(9,33,26,0.6) 0%, rgba(19,57,46,0.4) 2%, rgba(35,109,87,0.3) 57%);
+    box-shadow: 3px 3px 6px 3px rgba(9,33,26,0.6);
+}
+
+.post_div h3 {
+    text-align: center;
+    padding: 5px;
+    max-width: 110px;
+
+    background-image: linear-gradient(155deg, #3c5e54 0%, #4e7c7c 100%);
+    box-shadow: 
+      0 -4px 4px -3px rgba(0, 0, 0, 0.3),
+      5px 0 3px -1px rgba(135, 226, 196, 0.6),
+      
+      0 5px 5px -3px rgba(35, 109, 87, 0.8),
+      -3px 0 3px -1px rgba(0, 0, 0, .8),
+
+      inset 0 -5px 3px -3px rgba(135, 226, 196, 0.2),
+      inset 5px 0 5px -2px rgba(0, 0, 0, .8);
+}
+
+
+.post_content {
+    text-align: center;
+    padding: 5px;
+
+    background-image: linear-gradient(155deg, #3c5e54 0%, #4e7c7c 100%);
+    box-shadow: 
+      0 -4px 4px -3px rgba(0, 0, 0, 0.3),
+      5px 0 3px -1px rgba(135, 226, 196, 0.6),
+      
+      0 5px 5px -3px rgba(35, 109, 87, 0.8),
+      -3px 0 3px -1px rgba(0, 0, 0, .8),
+
+      inset 0 -5px 3px -3px rgba(135, 226, 196, 0.2),
+      inset 5px 0 5px -2px rgba(0, 0, 0, .8);
+}
+
+.am_i_right {
+    text-align: center;
+    padding: 4px;
+
+    color: rgb(94, 216, 94);
+}
+
+.counts {
+    display: block;
+    text-align: center;
+    padding: 5px;
+
+    background-image: linear-gradient(155deg, #3c5e54 0%, #4e7c7c 100%);
+    box-shadow: 
+      0 -4px 4px -3px rgba(0, 0, 0, 0.3),
+      5px 0 3px -1px rgba(135, 226, 196, 0.6),
+      
+      0 5px 5px -3px rgba(35, 109, 87, 0.8),
+      -3px 0 3px -1px rgba(0, 0, 0, .8),
+
+      inset 0 -5px 3px -3px rgba(135, 226, 196, 0.2),
+      inset 5px 0 5px -2px rgba(0, 0, 0, .8);
+}
+
+.likes {
+    color: rgb(59, 144, 255);
+}
+
+.dislikes {
+    color: red;
+}
+
+button:active{
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.add_agree {
+    float: left;
+    padding: 4px;
+    margin-top: 20px;
+
+    border-top: 2px outset rgb(111, 111, 255);
+    border-left: 2px outset rgb(111, 111, 255);
+    border-right: 3px outset rgb(102, 102, 241);
+    border-bottom: 3px outset rgb(94, 94, 226);
+    border-radius: 5%;
+    outline: none;
+
+    color: rgb(16, 16, 121);
+
+    background-color: royalblue;
+}
+
+.add_disagree {
+    float: right;
+    padding: 4px;
+    margin-top: 20px;
+
+    border-top: 2px outset rgb(252, 36, 36);
+    border-left: 2px outset rgb(255, 77, 77);
+    border-right: 3px outset red;
+    border-bottom: 3px outset red;
+    border-radius: 5%;
+    outline: none;
+
+    color: rgb(58, 2, 2);
+
+    background-color: rgb(212, 71, 71);
+}
