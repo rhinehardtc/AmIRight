@@ -2,6 +2,7 @@
     display: none;
 }
 
+
 body {
     background: rgb(1,1,38);
     background: linear-gradient(180deg, rgba(1,1,38,1) 8%, rgba(18,46,51,1) 65%, rgba(28,93,97,1) 95%) fixed;
@@ -11,6 +12,7 @@ body {
 h1 {
     color: rgb(154, 211, 228);
     
+    font-family: 'Kanit', sans-serif;
     margin-top: 5%;
     margin-bottom: 10%;
 }
@@ -18,16 +20,25 @@ h1 {
 .banner {
     display: flex;
     
-    padding-left:34%;
+    padding-left:33%;
     padding-right: 25%;
 
     background-color: rgb(20, 43, 87, 0.3);
 }
 
+.login_button {
+    margin: 10px;
+    padding: 4px;
+
+    background-color: lightcyan;
+}
+
 .posts_container {
-    display: flex;
+    display: ruby-base-container;
     float: center;
     position: relative;
+
+    align-items: center;
 
     border: 5px inset rgb(35, 109, 87);
     border-radius: 25px;
@@ -51,78 +62,92 @@ h1 {
     margin-top: 40px;
     margin-bottom: 40px;
     padding-top: 5px;
-    padding-bottom: 20px;
+    padding-bottom: 50px;
     padding-right: 30px;
     padding-left: 30px;
 
-    border-left: 2px solid rgb(35, 109, 87);
-    border-right: 5px ridge rgb(35, 109, 87);
-    border-top: 1px solid rgb(35, 109, 87);
-    border-bottom: 5px ridge rgb(35, 109, 97);
+    border-left: 2px solid rgb(52, 122, 163);
+    border-right: 5px ridge rgb(47, 110, 146);
+    border-top: 1px solid rgb(53, 128, 172);
+    border-bottom: 5px ridge rgb(47, 110, 146);
     border-radius: 15%;
 
+    font-family: 'Chivo', sans-serif;
     color: rgb(3, 14, 3);
     
-    background: rgb(35,109,87);
-    background: radial-gradient(ellipse at left top, rgba(9,33,26,0.6) 0%, rgba(19,57,46,0.4) 2%, rgba(35,109,87,0.3) 57%);
+    background: rgb(35, 82, 109);
+    background: radial-gradient(ellipse at left top, rgba(62, 142, 235, 0.2) 0%, rgba(46, 104, 138, 0.3) 15%, rgba(39, 83, 124, 0.4) 57%);
     box-shadow: 3px 3px 6px 3px rgba(9,33,26,0.6);
 }
 
 .post_div h3 {
     text-align: center;
+    text-shadow: 2px 2px 2px black;
     padding: 5px;
-    max-width: 110px;
+    max-width: 120px;
 
-    background-image: linear-gradient(155deg, #3c5e54 0%, #4e7c7c 100%);
+    color: rgb(170, 231, 255);
+
+    background-image: linear-gradient(155deg, #3c4f5e 0%, #4e627c 100%);
     box-shadow: 
       0 -4px 4px -3px rgba(0, 0, 0, 0.3),
-      5px 0 3px -1px rgba(135, 226, 196, 0.6),
+      4px 0 3px -1px rgba(135, 193, 226, 0.6),
       
-      0 5px 5px -3px rgba(35, 109, 87, 0.8),
+      0 5px 5px -3px rgba(35, 82, 109, 0.8),
       -3px 0 3px -1px rgba(0, 0, 0, .8),
 
-      inset 0 -5px 3px -3px rgba(135, 226, 196, 0.2),
+      inset 0 -5px 3px -3px rgba(135, 185, 226, 0.2),
       inset 5px 0 5px -2px rgba(0, 0, 0, .8);
+
+    border-radius: 25%;
 }
 
 
 .post_content {
     text-align: center;
+    text-shadow: 1px 1px 1px black;
     padding: 5px;
 
-    background-image: linear-gradient(155deg, #3c5e54 0%, #4e7c7c 100%);
+    color: rgb(218, 234, 255);
+
+    background-image: linear-gradient(155deg, #426e7e 0%, #6290aa 100%);
     box-shadow: 
       0 -4px 4px -3px rgba(0, 0, 0, 0.3),
-      5px 0 3px -1px rgba(135, 226, 196, 0.6),
+      4px 0 3px -2px rgba(162, 219, 223, 0.6),
       
-      0 5px 5px -3px rgba(35, 109, 87, 0.8),
-      -3px 0 3px -1px rgba(0, 0, 0, .8),
+      0 5px 5px -3px rgba(59, 104, 105, 0.8),
+      -3px 0 3px -1px rgba(0, 0, 0, 0.8),
 
-      inset 0 -5px 3px -3px rgba(135, 226, 196, 0.2),
-      inset 5px 0 5px -2px rgba(0, 0, 0, .8);
+      inset 0 -5px 3px -3px rgba(157, 218, 226, 0.2),
+      inset 5px 0 5px -2px rgba(0, 0, 0, 0.8);
 }
 
 .am_i_right {
     text-align: center;
+    text-shadow: 2px 1px 2px rgb(16, 18, 49);
     padding: 4px;
 
-    color: rgb(94, 216, 94);
+    font-family: 'Kanit', sans-serif;
+    color: rgb(236, 238, 255);
 }
 
 .counts {
     display: block;
     text-align: center;
-    padding: 5px;
+    text-shadow: 1px 1px 1px black;
+    padding: 6px;
 
-    background-image: linear-gradient(155deg, #3c5e54 0%, #4e7c7c 100%);
+    color: rgb(183, 227, 253);
+
+    background-image: linear-gradient(155deg, #445b6d 0%, #4e627c 100%);
     box-shadow: 
       0 -4px 4px -3px rgba(0, 0, 0, 0.3),
-      5px 0 3px -1px rgba(135, 226, 196, 0.6),
+      4px 0 3px -1px rgba(135, 193, 226, 0.6),
       
-      0 5px 5px -3px rgba(35, 109, 87, 0.8),
+      0 5px 5px -3px rgba(35, 82, 109, 0.8),
       -3px 0 3px -1px rgba(0, 0, 0, .8),
 
-      inset 0 -5px 3px -3px rgba(135, 226, 196, 0.2),
+      inset 0 -5px 3px -3px rgba(135, 185, 226, 0.2),
       inset 5px 0 5px -2px rgba(0, 0, 0, .8);
 }
 
@@ -140,35 +165,67 @@ button:active{
 }
 
 .add_agree {
+    text-shadow: black -1px -1px 2px;
     float: left;
-    padding: 4px;
-    margin-top: 20px;
+    padding: 6px;
+    margin-bottom: 10px;
 
-    border-top: 2px outset rgb(111, 111, 255);
-    border-left: 2px outset rgb(111, 111, 255);
+    width: 35%;
+    height: 15%;
+
+    border-top: 1px outset rgb(81, 81, 187);
+    border-left: 1px outset rgb(81, 81, 184);
     border-right: 3px outset rgb(102, 102, 241);
     border-bottom: 3px outset rgb(94, 94, 226);
-    border-radius: 5%;
+    border-radius: 40%;
     outline: none;
 
-    color: rgb(16, 16, 121);
+    font-family: 'Chivo', sans-serif;
+    font-size: inherit;
+    color: rgb(255, 255, 255);
 
     background-color: royalblue;
+    background: radial-gradient(ellipse at left top, rgb(93, 103, 146) 0%, rgb(76, 119, 211) 15%, rgb(28, 64, 163) 57%);
+    box-shadow: 
+    inset 2px -1px 1px 0 rgba(255, 255, 255, 0.2),
+    inset -4px 2px 5px 0 rgba(0, 0, 0, 0.2),
+    
+    5px 4px 4px 0 rgba(15, 26, 49, 0.5),
+    -1px -1px 1px 0 rgba(18, 31, 73, 0.5),
+
+    4px -2px 3px 0 rgba(15, 27, 54, 0.5),
+    -1px -1px 5px 0 rgba(15, 11, 39, 0.5);
 }
 
 .add_disagree {
+    text-shadow: black -1px -1px 2px;
     float: right;
-    padding: 4px;
-    margin-top: 20px;
+    padding: 6px;
+    margin-bottom: 10px;
 
-    border-top: 2px outset rgb(252, 36, 36);
-    border-left: 2px outset rgb(255, 77, 77);
-    border-right: 3px outset red;
-    border-bottom: 3px outset red;
-    border-radius: 5%;
+    width: 35%;
+    height: 15%;
+
+    border-top: 1px outset rgb(219, 31, 63);
+    border-left: 1px outset rgb(218, 67, 99);
+    border-right: 3px outset rgb(255, 0, 43);
+    border-bottom: 3px outset rgb(255, 0, 64);
+    border-radius: 40%;
     outline: none;
 
-    color: rgb(58, 2, 2);
+    font-family: 'Chivo', sans-serif;
+    font-size: 15px;
+    color: rgb(255, 255, 255);
 
-    background-color: rgb(212, 71, 71);
+    background: rgb(212, 71, 71);
+    background: radial-gradient(ellipse at left top, rgb(255, 172, 172) 0%, rgb(211, 76, 76) 15%, rgb(163, 28, 28) 57%);
+    box-shadow: 
+    inset 2px -1px 1px 0 rgba(255, 255, 255, .2),
+    inset -4px 2px 5px 0 rgba(0, 0, 0, .2),
+    
+    5px 4px 4px 0 rgba(49, 15, 15, 0.5),
+    -1px -1px 1px 0 rgba(73, 18, 18, 0.5),
+
+    4px -2px 3px 0 rgba(54, 15, 15, 0.5),
+    -1px -1px 5px 0 rgba(39, 11, 11, 0.5);
 }
