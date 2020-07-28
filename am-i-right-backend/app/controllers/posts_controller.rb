@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     end
 
     def create
-        post = Post.new(user_id: params[:user_id], content: params[:content], likes: [], dislikes: [])
+        post = Post.new(user_id: params[:user_id], content: params[:content])
         if post.valid?
             post.save
             render json: post

@@ -15,13 +15,36 @@
         <script src="src/index.js" defer></script>
     </head>
     <body>
-        <div class="banner">
+        <div class="banner" id="banner">
             <h1>The Opinion Validation Network</h1>
         </div>
+
+        <form id="create_form" class="form">
+            <div>
+                <input type="text" placeholder="username" name="username" id="create_username">
+                </br>
+                <input type="password" placeholder="password" name="password" id="create_password">
+                <input type="submit">
+            </div>
+            <input type="button" value="Cancel" id="cancel">
+        </form>
+
+        <form id="login_form" class="form">
+            <div>
+                <input type="text" placeholder="username" name="username" id="login_username">
+                </br>
+                <input type="password" placeholder="password" name="password" id="login_password">
+                <input type="submit">
+            </div>
+            <input type="button" value="Cancel" id="cancel_login">
+        </form>
+
         <div class="login" id="login">
-            <button class="login_button">Login</button>
-            <button class="login_button">Sign Up</button>
+            <button class="login_button" id="login_button">Login</button>
+            <button class="login_button" id="sign_up">Sign Up</button>
+            <button class="login_button" id="logout_button">Logout</button>
         </div>
+
         <div class="posts_container" id="posts_container">
 
         </div>
