@@ -19,3 +19,9 @@ The WebApp should be able to display posts regarding:
 
 
 Each user can only vote once for each statement, which will increase the number of right or wrong votes respectively.
+
+Working To-Do:
+1. Add 2 join tables (likes, dislikes)
+2. Add user create
+3. Add user login
+4. Create a post form

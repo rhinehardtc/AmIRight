@@ -1,0 +1,253 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+body {
+    background: rgb(1,1,38);
+    background: linear-gradient(180deg, rgba(1,1,38,1) 8%, rgba(18,46,51,1) 65%, rgba(28,93,97,1) 95%) fixed;
+    background-color: black;
+}
+
+h1 {
+    color: rgb(154, 211, 228);
+    
+    font-family: 'Kanit', sans-serif;
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+.banner {
+    display: flex;
+    
+    padding-left:33%;
+    padding-right: 25%;
+
+    background-color: rgb(20, 43, 87, 0.3);
+}
+
+.welcome_header {
+    display: inline;
+
+    color: rgb(154, 211, 228);
+    
+    font-family: 'Kanit', sans-serif;
+}
+
+.form {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(11, 126, 192, 0.7);
+    backdrop-filter: blur(7px);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 2;
+}
+
+.form div {
+    display: flex;
+}
+
+.form input {
+    display: flex;
+    margin-top: 50px;
+    margin-left: 10px;
+}
+
+.login_button {
+    margin: 10px;
+    padding: 4px;
+
+    font-family: 'Chivo', sans-serif;
+
+    background-color: lightcyan;
+}
+
+#logout_button {
+    display: none;
+}
+
+#post_button {
+    display: none;
+}
+
+.posts_container {
+    display: ruby-base-container;
+    float: center;
+    position: relative;
+
+    align-items: center;
+
+    border: 5px inset rgb(35, 109, 87);
+    border-radius: 25px;
+    
+    margin-top: 80px;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-left: 25%;
+    
+
+    background-color: rgba(230, 230, 250, 0.150);
+}
+
+.post_div {
+    display: ruby;
+    float: center;
+    position: static;
+
+    width: 40%;
+
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding-top: 5px;
+    padding-bottom: 55px;
+    padding-right: 30px;
+    padding-left: 30px;
+
+    border-left: 2px solid rgb(52, 122, 163);
+    border-right: 5px ridge rgb(47, 110, 146);
+    border-top: 1px solid rgb(53, 128, 172);
+    border-bottom: 5px ridge rgb(47, 110, 146);
+    border-radius: 15%;
+
+    font-family: 'Chivo', sans-serif;
+    color: rgb(3, 14, 3);
+    
+    background: rgb(35, 82, 109);
+    background: radial-gradient(ellipse at left top, rgba(62, 142, 235, 0.2) 0%, rgba(46, 104, 138, 0.3) 15%, rgba(39, 83, 124, 0.4) 57%);
+    box-shadow: 3px 3px 6px 3px rgba(9,33,26,0.6);
+}
+
+.post_div h3 {
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    padding: 5px;
+    max-width: 120px;
+
+    color: rgb(170, 231, 255);
+
+    border-radius: 25%;
+}
+
+
+.post_content {
+    text-align: center;
+    text-shadow: 1px 1px 1px black;
+    padding: 8px;
+
+    color: rgb(218, 234, 255);
+
+    background-image: linear-gradient(155deg, #426e7e 0%, #6290aa 100%);
+    box-shadow: 
+      0 -4px 4px -3px rgba(0, 0, 0, 0.3),
+      4px 0 3px -2px rgba(162, 219, 223, 0.6),
+      
+      0 5px 5px -3px rgba(59, 104, 105, 0.8),
+      -3px 0 3px -1px rgba(0, 0, 0, 0.8),
+
+      inset 0 -5px 3px -3px rgba(157, 218, 226, 0.2),
+      inset 5px 0 5px -2px rgba(0, 0, 0, 0.8);
+}
+
+.am_i_right {
+    text-align: center;
+    text-shadow: 2px 1px 2px rgb(16, 18, 49);
+    padding: 4px;
+
+    font-size: 18px;
+    font-family: 'Kanit', sans-serif;
+    color: rgb(236, 238, 255);
+}
+
+.counts {
+    display: block;
+    text-align: center;
+    text-shadow: 1px 1px 1px black;
+    padding: 6px;
+
+    color: rgb(183, 227, 253);
+}
+
+.likes {
+    color: rgb(59, 144, 255);
+}
+
+.dislikes {
+    color: red;
+}
+
+button:active{
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.add_agree {
+    text-shadow: black -1px -1px 2px;
+    float: left;
+    padding: 6px;
+    margin-bottom: 10px;
+
+    width: 35%;
+    height: 15%;
+
+    border-top: 1px outset rgb(81, 81, 187);
+    border-left: 1px outset rgb(81, 81, 184);
+    border-right: 3px outset rgb(102, 102, 241);
+    border-bottom: 3px outset rgb(94, 94, 226);
+    border-radius: 40%;
+    outline: none;
+
+    font-family: 'Chivo', sans-serif;
+    font-size: inherit;
+    color: rgb(255, 255, 255);
+
+    background-color: royalblue;
+    background: radial-gradient(ellipse at left top, rgb(93, 103, 146) 0%, rgb(76, 119, 211) 15%, rgb(28, 64, 163) 57%);
+    box-shadow: 
+    inset 2px -1px 1px 0 rgba(255, 255, 255, 0.2),
+    inset -4px 2px 5px 0 rgba(0, 0, 0, 0.2),
+    
+    5px 4px 4px 0 rgba(15, 26, 49, 0.5),
+    -1px -1px 1px 0 rgba(18, 31, 73, 0.5),
+
+    4px -2px 3px 0 rgba(15, 27, 54, 0.5),
+    -1px -1px 5px 0 rgba(15, 11, 39, 0.5);
+}
+
+.add_disagree {
+    text-shadow: black -1px -1px 2px;
+    float: right;
+    padding: 6px;
+    margin-bottom: 10px;
+
+    width: 35%;
+    height: 15%;
+
+    border-top: 1px outset rgb(219, 31, 63);
+    border-left: 1px outset rgb(218, 67, 99);
+    border-right: 3px outset rgb(255, 0, 43);
+    border-bottom: 3px outset rgb(255, 0, 64);
+    border-radius: 40%;
+    outline: none;
+
+    font-family: 'Chivo', sans-serif;
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+
+    background: rgb(212, 71, 71);
+    background: radial-gradient(ellipse at left top, rgb(255, 172, 172) 0%, rgb(211, 76, 76) 15%, rgb(163, 28, 28) 57%);
+    box-shadow: 
+    inset 2px -1px 1px 0 rgba(255, 255, 255, .2),
+    inset -4px 2px 5px 0 rgba(0, 0, 0, .2),
+    
+    5px 4px 4px 0 rgba(49, 15, 15, 0.5),
+    -1px -1px 1px 0 rgba(73, 18, 18, 0.5),
+
+    4px -2px 3px 0 rgba(54, 15, 15, 0.5),
+    -1px -1px 5px 0 rgba(39, 11, 11, 0.5);
+}

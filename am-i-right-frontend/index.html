@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Am I Right?</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Chivo&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@900&display=swap" rel="stylesheet">
+        
+        <link href="assets/styles/main.css" rel="stylesheet">
+
+        <script src="src/index.js" defer></script>
+    </head>
+    <body>
+        <div class="banner" id="banner">
+            <h1>The Opinion Validation Network</h1>
+        </div>
+
+        <form id="create_form" class="form">
+            <div>
+                <input type="text" placeholder="username" name="username" id="create_username">
+                </br>
+                <input type="password" placeholder="password" name="password" id="create_password">
+                <input type="submit">
+            </div>
+            <input type="button" value="Cancel" id="cancel">
+        </form>
+
+        <form id="login_form" class="form">
+            <div>
+                <input type="text" placeholder="username" name="username" id="login_username">
+                </br>
+                <input type="password" placeholder="password" name="password" id="login_password">
+                <input type="submit">
+            </div>
+            <input type="button" value="Cancel" id="cancel_login">
+        </form>
+
+        <form id="post_form" class="form">
+            <div>
+                <textarea placeholder="Type in your post!" id="post_area"></textarea>
+                </br>
+                <input type="submit">
+            </div>
+            <input type="button" value="Cancel" id="cancel_post">
+        </form>
+
+        <div class="login" id="login">
+            <button class="login_button" id="login_button">Login</button>
+            <button class="login_button" id="sign_up">Sign Up</button>
+            <button class="login_button" id="logout_button">Logout</button>
+            <button class="login_button" id="post_button">Assert an opinion!</button>
+        </div>
+
+        <div class="posts_container" id="posts_container">
+
+        </div>
+    </body>
+</html>
