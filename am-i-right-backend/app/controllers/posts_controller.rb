@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
     def index
         posts = Post.all
-        render json: posts, include: :user
+        render json: posts, include: :user include: :likes
     end
 
     def show
