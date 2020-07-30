@@ -1,5 +1,6 @@
 const postsURL = 'http://localhost:3000/posts/';
 const usersURL = 'http://localhost:3000/users/'
+const likesURL = 'http://localhost:3000/likes/'
 
 document.addEventListener('DOMContentLoaded', () => {
     getPosts();
@@ -7,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loginUser();
     handleLogout();
     sessionDisplayManager();
-    console.log(sessionStorage);
+   
 });
 
 function getPosts(){
@@ -24,6 +25,18 @@ function getPosts(){
 function showPost(post){
     const postsContainer = document.getElementById('posts_container');
     const postDiv = document.createElement('div');
+    const likes = []
+    const dislikes = []
+    for (const like of post.likes){
+        if (like.agree === true){
+            likes.push(like)
+        }
+    }
+    for (const like of post.likes){
+        if (like.disagree === true){
+            dislikes.push(like)
+        }
+    }
 
     postDiv.innerHTML = `
         <h3>Posted By: ${post.user.name}</h3>
@@ -32,18 +45,22 @@ function showPost(post){
         <p class="am_i_right">Am I right?</p>
         </br>
         <div class="counts">
-            <span class="likes">${post.likes} </span>
+            <span class="likes" id="${post.id}like">${likes.length} </span>
             people agree.
-            <span class="dislikes"> ${post.dislikes} </span>
+            <span class="dislikes" id="${post.id}dislike"> ${dislikes.length} </span>
             people disagree.
         </div>
         </br>
-        <button class="add_agree">You Right</button> <button class="add_disagree">You Wrong</button>
+        <button class="add_agree" id="${post.id}agree">You Right</button> <button class="add_disagree" id="${post.id}disagree">You Wrong</button>
     `;
 
     postDiv.className = "post_div";
+    postDiv.setAttribute('name', `${post.user.name}`)
+    postDiv.id = post.id
 
     postsContainer.appendChild(postDiv);
+    addLike(post)
+    addDislike(post)
 };
 
 function createUser(){
@@ -240,3 +257,85 @@ function getPost(post){
     .then(response => response.json())
     .then(json => showPost(json))
 };
+
+function addLike(post){
+    const agreeButton = document.getElementById(`${post.id}agree`)
+    agreeButton.addEventListener("click", () => {
+        document.getElementById(`${post.id}like`).innerHTML++
+        console.log("click click")
+        // for (const like of post.likes){
+        //     if (like.user_id === sessionStorage["user_id"]){
+        //         patchLike(like)
+        //     }
+        //     else { 
+                postLike(post)
+            })
+};
+
+function postLike(post) {
+    fetch(likesURL, {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json",
+            Accept: "application/json"
+        },
+        body: JSON.stringify({
+            user_id: post.user.id,
+            post_id: post.id,
+            agree: true,
+            disagree: false
+        })
+    })
+    .then(response => response.json())
+    .then(json => console.log(json))
+
+};
+
+function addDislike(post){
+    const disagreeButton = document.getElementById(`${post.id}disagree`)
+    disagreeButton.addEventListener("click", () => {
+        document.getElementById(`${post.id}dislike`).innerHTML++
+        console.log("click click")
+        // for (const like of post.likes){
+        //     if (like.user_id === sessionStorage["user_id"]){
+        //         patchLike(like)
+        //     }
+        //     else { 
+                postDislike(post)
+            })
+};
+
+function postDislike(post) {
+    fetch(likesURL, {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json",
+            Accept: "application/json"
+        },
+        body: JSON.stringify({
+            user_id: post.user.id,
+            post_id: post.id,
+            agree: false,
+            disagree: true
+        })
+    })
+    .then(response => response.json())
+    .then(json => console.log(json))
+};
+
+
+// function patchLike(like){
+//     fetch(`${likesURL}${like.id}`, {
+//         method: "PATCH",
+//         headers: {
+//             "Content-type": "application/json",
+//             Accept: "application/json"
+//         },
+//         body: JSON.stringify({
+//             agree: true,
+//             disagree: false
+//         })
+//     })
+//     .then(response => response.json())
+//     .then(json => console.log(json))
+// };
