@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :dislikes
+ 
   resources :likes
   resources :posts
   resources :users
