@@ -25,8 +25,8 @@ function getPosts(){
 function showPost(post){
     const postsContainer = document.getElementById('posts_container');
     const postDiv = document.createElement('div');
-    const likes = []
-    const dislikes = []
+    const likes = [];
+    const dislikes = [];
     for (const like of post.likes){
         if (like.agree === true){
             likes.push(like)
@@ -38,29 +38,82 @@ function showPost(post){
         }
     }
 
+    let likePerson = "person";
+    let dislikePerson = "person";
+
+    let agree = "agrees";
+    let disagree = "disagrees";
+
+    if (likes.length > 1 || likes.length === 0){
+        likePerson = "people";
+        agree = "agree";
+    };
+
+    if(dislikes.length > 1 || dislikes.length === 0){
+        dislikePerson = "people";
+        disagree = "disagree";
+    };
+
     postDiv.innerHTML = `
         <h3>Posted By: ${post.user.name}</h3>
+        
+        <div class="dropdown">
+            <button class="dots"></button>
+            <div class="dropdown-content">
+                <h5 class="delete_post">Delete Post</h5>
+                <h5 class="flag_post">Flag Post</h5>
+                <h5 class="exit_dropdown">Nevermind</h5>
+            </div>
+        </div>
+
         </br>
         <p class="post_content">${post.content}</p>
         <p class="am_i_right">Am I right?</p>
         </br>
         <div class="counts">
             <span class="likes" id="${post.id}like">${likes.length} </span>
-            people agree.
+            ${likePerson} ${agree}.
             <span class="dislikes" id="${post.id}dislike"> ${dislikes.length} </span>
-            people disagree.
+            ${dislikePerson} ${disagree}.
         </div>
         </br>
-        <button class="add_agree" id="${post.id}agree">You Right</button> <button class="add_disagree" id="${post.id}disagree">You Wrong</button>
+        <button class="add_agree" id="${post.id}agree">✓</button> <button class="add_disagree" id="${post.id}disagree">✖︎</button>
     `;
 
     postDiv.className = "post_div";
-    postDiv.setAttribute('name', `${post.user.name}`)
-    postDiv.id = post.id
+    postDiv.name = post.user.name;
+    postDiv.id = post.id;
+
+    const dotMenu = postDiv.getElementsByClassName('dots')[0];
+
+    dotMenu.addEventListener('click', () => {
+        postDiv.getElementsByClassName('dropdown-content')[0].style.display = 'block';
+        if(postDiv.name !== sessionStorage["user_name"]){
+            postDiv.getElementsByClassName('delete_post')[0].style.display = 'none';
+        };
+    });
+
+    postDiv.getElementsByClassName('exit_dropdown')[0].addEventListener('click', () => {
+        postDiv.getElementsByClassName('dropdown-content')[0].style.display = 'none';
+    });
+
+    postDiv.getElementsByClassName('delete_post')[0].addEventListener('click', () => {
+        postDiv.remove();
+        deletePost(post);
+    });
+
 
     postsContainer.appendChild(postDiv);
-    addLike(post)
-    addDislike(post)
+
+    addLike(post);
+    addDislike(post);
+};
+
+function deletePost(post){
+    console.log(post.id);
+    fetch(`${postsURL}${post.id}`, {
+        method: 'DELETE'
+    });
 };
 
 function createUser(){
@@ -181,6 +234,7 @@ function sessionDisplayManager(){
     const logoutButton = document.getElementById('logout_button');
     const loginButton = document.getElementById('login_button');
     const postButton = document.getElementById('post_button');
+    const userPostFilter = document.getElementById('filter_by_user_button');
 
     console.log(sessionStorage.length);
 
@@ -188,11 +242,34 @@ function sessionDisplayManager(){
         loginButton.style.display = 'inline';
         logoutButton.style.display = 'none';
         postButton.style.display = 'none';
+        userPostFilter.style.display = 'none';
     } else {
         loginButton.style.display = 'none';
         logoutButton.style.display = 'inline';
+        userPostFilter.style.display = 'inline';
+        filterUserPosts(userPostFilter);
         makePost(postButton);
     };
+};
+
+function filterUserPosts(button){
+    const allPostDivs = document.getElementsByClassName('post_div');
+
+    button.addEventListener('click', () => {
+        if(button.innerText === "Show my posts"){
+            button.innerText = "Show all posts"
+            for(const postDiv of allPostDivs){
+                if(postDiv.name !== sessionStorage["user_name"]){
+                    postDiv.style.display = 'none';
+                };
+            };
+        } else {
+            button.innerText = "Show my posts"
+            for(const postDiv of allPostDivs){
+                postDiv.style.display = 'block';
+            };
+        };
+    });
 };
 
 function welcomeUser(currentUser){
@@ -217,7 +294,7 @@ function welcomeUser(currentUser){
 function makePost(button){
     const postArea = document.getElementById('post_area');
     const postForm = document.getElementById('post_form');
-    const cancelPost = document.getElementById('cancel_post')
+    const cancelPost = document.getElementById('cancel_post');
 
     button.style.display = 'inline';
 
@@ -231,7 +308,8 @@ function makePost(button){
 
     postForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        postPost(postArea.value)
+        postPost(postArea.value);
+        postArea.value = "";
         postForm.style.display = 'none';
     });
 };
@@ -269,7 +347,7 @@ function addLike(post){
         //     }
         //     else { 
                 postLike(post)
-            })
+    })
 };
 
 function postLike(post) {
@@ -302,7 +380,7 @@ function addDislike(post){
         //     }
         //     else { 
                 postDislike(post)
-            })
+    })
 };
 
 function postDislike(post) {

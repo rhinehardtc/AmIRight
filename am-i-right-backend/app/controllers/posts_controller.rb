@@ -20,4 +20,8 @@ class PostsController < ApplicationController
             render json: {messge: 'something went wrong, try again'}
         end
     end
+
+    def destroy
+        Post.destroy(params[:id])
+    end
 end

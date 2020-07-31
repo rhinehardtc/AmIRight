@@ -63,6 +63,8 @@ h1 {
     margin: 10px;
     padding: 4px;
 
+    outline: none;
+
     font-family: 'Chivo', sans-serif;
 
     background-color: lightcyan;
@@ -74,6 +76,11 @@ h1 {
 
 #post_button {
     display: none;
+}
+
+#filter_by_user_button {
+    display: none;
+    float: right;
 }
 
 .posts_container {
@@ -240,7 +247,7 @@ button:active{
     color: rgb(255, 255, 255);
 
     background: rgb(212, 71, 71);
-    background: radial-gradient(ellipse at left top, rgb(255, 172, 172) 0%, rgb(211, 76, 76) 15%, rgb(163, 28, 28) 57%);
+    background: radial-gradient(ellipse at left top, rgb(255, 181, 181) 0%, rgb(211, 76, 76) 15%, rgb(163, 28, 28) 57%);
     box-shadow: 
     inset 2px -1px 1px 0 rgba(255, 255, 255, .2),
     inset -4px 2px 5px 0 rgba(0, 0, 0, .2),
