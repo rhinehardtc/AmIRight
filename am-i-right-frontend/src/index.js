@@ -16,7 +16,7 @@ function getPosts(){
     .then(response => response.json())
     .then(json => {
         for(const post of json){
-            console.log(post)
+            // console.log(post)
             showPost(post)
         }
     })
@@ -245,6 +245,7 @@ function sessionDisplayManager(){
         userPostFilter.style.display = 'none';
     } else {
         loginButton.style.display = 'none';
+        logoutButton.innerText = `Logout ${sessionStorage.user_name}`
         logoutButton.style.display = 'inline';
         userPostFilter.style.display = 'inline';
         filterUserPosts(userPostFilter);
@@ -339,15 +340,21 @@ function getPost(post){
 function addLike(post){
     const agreeButton = document.getElementById(`${post.id}agree`)
     agreeButton.addEventListener("click", () => {
-        document.getElementById(`${post.id}like`).innerHTML++
-        console.log("click click")
-        // for (const like of post.likes){
-        //     if (like.user_id === sessionStorage["user_id"]){
-        //         patchLike(like)
-        //     }
-        //     else { 
-                postLike(post)
-    })
+        if(post.user.id === parseInt(sessionStorage.user_id, 10)){
+            alert('Cannot like your own post.');
+        } else if(sessionStorage.length > 0){
+            document.getElementById(`${post.id}like`).innerHTML++;
+            console.log(post.user.id);
+            // for (const like of post.likes){
+            //     if (like.user_id === sessionStorage["user_id"]){
+            //         patchLike(like)
+            //     }
+            //     else { 
+            postLike(post);
+        } else {
+            alert('Must be logged in to like a post.');
+        };
+    });
 };
 
 function postLike(post) {
@@ -366,21 +373,26 @@ function postLike(post) {
     })
     .then(response => response.json())
     .then(json => console.log(json))
-
 };
 
 function addDislike(post){
     const disagreeButton = document.getElementById(`${post.id}disagree`)
     disagreeButton.addEventListener("click", () => {
-        document.getElementById(`${post.id}dislike`).innerHTML++
-        console.log("click click")
-        // for (const like of post.likes){
-        //     if (like.user_id === sessionStorage["user_id"]){
-        //         patchLike(like)
-        //     }
-        //     else { 
-                postDislike(post)
-    })
+        if(post.user.id === parseInt(sessionStorage.user_id, 10)){
+            alert('Cannot dislike your own post.');
+        } else if(sessionStorage.length > 0){
+            document.getElementById(`${post.id}dislike`).innerHTML++;
+            console.log(post.user.id);
+            // for (const like of post.likes){
+            //     if (like.user_id === sessionStorage["user_id"]){
+            //         patchLike(like)
+            //     }
+            //     else { 
+            postDislike(post);
+        } else {
+            alert('Must be logged in to dislike a post.');
+        };
+    });
 };
 
 function postDislike(post) {

@@ -63,11 +63,16 @@ h1 {
     margin: 10px;
     padding: 4px;
 
+    border: 2px inset lightcyan;
     outline: none;
 
     font-family: 'Chivo', sans-serif;
 
     background-color: lightcyan;
+}
+
+.login_button:active {
+    border: 1px inset lightcyan;
 }
 
 #logout_button {
@@ -92,6 +97,7 @@ h1 {
 
     border: 5px inset rgb(35, 109, 87);
     border-radius: 25px;
+    min-height: 200px;
     
     margin-top: 80px;
     margin-left: 10%;
@@ -190,7 +196,6 @@ h1 {
 
 button:active{
     outline: none;
-    -webkit-appearance: none;
 }
 
 .add_agree {
@@ -226,6 +231,20 @@ button:active{
     -1px -1px 5px 0 rgba(15, 11, 39, 0.5);
 }
 
+.add_agree:active {
+    background-color: royalblue;
+    background: radial-gradient(ellipse at left top, rgb(93, 103, 146) 0%, rgb(76, 119, 211) 18%, rgb(28, 64, 163) 60%);
+    box-shadow: 
+    inset 2px -1px 1px 0 rgba(255, 255, 255, 0.2),
+    inset -4px 2px 5px 0 rgba(0, 0, 0, 0.2),
+    
+    3px 3px 2px 0 rgba(15, 26, 49, 0.5),
+    0px 0px 1px 0 rgba(18, 31, 73, 0.5),
+
+    2px -1px 3px 0 rgba(15, 27, 54, 0.5),
+    -1px -1px 5px 0 rgba(15, 11, 39, 0.5);
+}
+
 .add_disagree {
     text-shadow: black -1px -1px 2px;
     float: right;
@@ -247,7 +266,7 @@ button:active{
     color: rgb(255, 255, 255);
 
     background: rgb(212, 71, 71);
-    background: radial-gradient(ellipse at left top, rgb(255, 181, 181) 0%, rgb(211, 76, 76) 15%, rgb(163, 28, 28) 57%);
+    background: radial-gradient(ellipse at left top, rgb(255, 191, 191) 0%, rgb(211, 76, 76) 15%, rgb(163, 28, 28) 57%);
     box-shadow: 
     inset 2px -1px 1px 0 rgba(255, 255, 255, .2),
     inset -4px 2px 5px 0 rgba(0, 0, 0, .2),
@@ -256,5 +275,19 @@ button:active{
     -1px -1px 1px 0 rgba(73, 18, 18, 0.5),
 
     4px -2px 3px 0 rgba(54, 15, 15, 0.5),
+    -1px -1px 5px 0 rgba(39, 11, 11, 0.5);
+}
+
+.add_disagree:active {
+    background: rgb(212, 71, 71);
+    background: radial-gradient(ellipse at left top, rgb(255, 191, 191) 0%, rgb(211, 76, 76) 18%, rgb(163, 28, 28) 60%);
+    box-shadow: 
+    inset 2px -1px 1px 0 rgba(255, 255, 255, .2),
+    inset -4px 2px 5px 0 rgba(0, 0, 0, .2),
+    
+    3px 3px 2px 0 rgba(49, 15, 15, 0.5),
+    0px 0px 1px 0 rgba(73, 18, 18, 0.5),
+
+    2px -1px 3px 0 rgba(54, 15, 15, 0.5),
     -1px -1px 5px 0 rgba(39, 11, 11, 0.5);
 }

@@ -6,6 +6,7 @@
   background: rgba(21, 72, 139, 0);
   border-radius: 50%;
   border-color: rgb(113, 172, 209);
+  outline: none;
   position:relative;
 }
 
@@ -34,8 +35,9 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
+  background-color: #a3edff71;
+  min-width: 140px;
+  backdrop-filter: blur(6px);
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -51,7 +53,7 @@
 
 /* Change color of dropdown links on hover */
 .dropdown-content h5:hover {
-  background-color: #6cb8ff79
+  background-color: #6cb8ff
 }
 
 .dropdown-content h5.flag_post:hover {
