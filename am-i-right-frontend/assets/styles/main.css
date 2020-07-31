@@ -89,8 +89,6 @@ h1 {
 }
 
 .posts_container {
-    display: ruby-base-container;
-    float: center;
     position: relative;
 
     align-items: center;
@@ -109,8 +107,6 @@ h1 {
 }
 
 .post_div {
-    display: ruby;
-    float: center;
     position: static;
 
     width: 40%;

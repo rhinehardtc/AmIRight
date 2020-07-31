@@ -20,7 +20,26 @@ class LikesController < ApplicationController
         end
     end
 
+    def edit
+        like = Like.find_by(id: params[:id])
+    end
+
+    def update
+        like = Like.find_by(id: params[:id])
+        if like.valid?
+            like.update(like_params)
+            render json: like
+        else
+            render json: {messge: 'something went wrong, try again'}
+        end
+    end
+
     def destroy
         Like.destroy(params[:id])
+    end
+
+    private
+    def like_params
+        params.require(:like).permit(:agree, :disagree)
     end
 end

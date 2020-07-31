@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     loginUser();
     handleLogout();
     sessionDisplayManager();
-   
 });
 
 function getPosts(){
@@ -16,10 +15,10 @@ function getPosts(){
     .then(response => response.json())
     .then(json => {
         for(const post of json){
-            // console.log(post)
-            showPost(post)
-        }
-    })
+            console.log(post);
+            showPost(post);
+        };
+    });
 };
 
 function showPost(post){
@@ -27,6 +26,7 @@ function showPost(post){
     const postDiv = document.createElement('div');
     const likes = [];
     const dislikes = [];
+
     for (const like of post.likes){
         if (like.agree === true){
             likes.push(like)
@@ -223,10 +223,10 @@ function handleLogout(){
         };
 
         sessionStorage.removeItem('user_name');
-        sessionStorage.removeItem('user_id')
+        sessionStorage.removeItem('user_id');
         console.log('test', sessionStorage);
 
-        sessionDisplayManager();
+        location.reload();
     });
 };
 
@@ -245,7 +245,7 @@ function sessionDisplayManager(){
         userPostFilter.style.display = 'none';
     } else {
         loginButton.style.display = 'none';
-        logoutButton.innerText = `Logout ${sessionStorage.user_name}`
+        logoutButton.innerText = `Logout ${sessionStorage.user_name}`;
         logoutButton.style.display = 'inline';
         userPostFilter.style.display = 'inline';
         filterUserPosts(userPostFilter);
@@ -258,14 +258,14 @@ function filterUserPosts(button){
 
     button.addEventListener('click', () => {
         if(button.innerText === "Show my posts"){
-            button.innerText = "Show all posts"
+            button.innerText = "Show all posts";
             for(const postDiv of allPostDivs){
                 if(postDiv.name !== sessionStorage["user_name"]){
                     postDiv.style.display = 'none';
                 };
             };
         } else {
-            button.innerText = "Show my posts"
+            button.innerText = "Show my posts";
             for(const postDiv of allPostDivs){
                 postDiv.style.display = 'block';
             };
@@ -275,7 +275,7 @@ function filterUserPosts(button){
 
 function welcomeUser(currentUser){
     console.log(`Welcome, ${currentUser}`);
-    console.log(sessionStorage)
+    console.log(sessionStorage);
 
     if(!document.getElementById('welcome_header')){
         const welcomeHeader = document.createElement('h3');
@@ -284,7 +284,7 @@ function welcomeUser(currentUser){
 
         welcomeHeader.innerText = `Welcome, ${currentUser}`;
 
-        document.getElementById('login').appendChild(welcomeHeader)
+        document.getElementById('login').appendChild(welcomeHeader);
     } else {
         document.getElementById('welcome_header').innerText = `Welcome, ${currentUser}`;
     };
@@ -338,19 +338,40 @@ function getPost(post){
 };
 
 function addLike(post){
-    const agreeButton = document.getElementById(`${post.id}agree`)
+    const agreeButton = document.getElementById(`${post.id}agree`);
+
     agreeButton.addEventListener("click", () => {
         if(post.user.id === parseInt(sessionStorage.user_id, 10)){
+
             alert('Cannot like your own post.');
+
         } else if(sessionStorage.length > 0){
-            document.getElementById(`${post.id}like`).innerHTML++;
-            console.log(post.user.id);
-            // for (const like of post.likes){
-            //     if (like.user_id === sessionStorage["user_id"]){
-            //         patchLike(like)
-            //     }
-            //     else { 
-            postLike(post);
+            let patchCheck = false;
+            let thisLike;
+
+            for (const like of post.likes){
+                console.log(like.user_id, parseInt(sessionStorage.user_id, 10));
+                if (like.user_id === parseInt(sessionStorage.user_id, 10)){
+                    patchCheck = true;
+                    console.log(like);
+                    thisLike = like;
+                };
+            };
+            
+            console.log(patchCheck, thisLike);
+
+            if (patchCheck === false){
+                document.getElementById(`${post.id}like`).innerHTML++;
+                postLike(post);
+            } else {
+                if(thisLike.disagree === true){
+                    document.getElementById(`${post.id}like`).innerHTML++;
+                    document.getElementById(`${post.id}dislike`).innerHTML--;
+                };
+                patchLike(thisLike);
+                thisLike.disagree = false;
+            };
+
         } else {
             alert('Must be logged in to like a post.');
         };
@@ -365,7 +386,7 @@ function postLike(post) {
             Accept: "application/json"
         },
         body: JSON.stringify({
-            user_id: post.user.id,
+            user_id: sessionStorage.user_id,
             post_id: post.id,
             agree: true,
             disagree: false
@@ -376,19 +397,36 @@ function postLike(post) {
 };
 
 function addDislike(post){
-    const disagreeButton = document.getElementById(`${post.id}disagree`)
+    const disagreeButton = document.getElementById(`${post.id}disagree`);
     disagreeButton.addEventListener("click", () => {
         if(post.user.id === parseInt(sessionStorage.user_id, 10)){
             alert('Cannot dislike your own post.');
         } else if(sessionStorage.length > 0){
-            document.getElementById(`${post.id}dislike`).innerHTML++;
-            console.log(post.user.id);
-            // for (const like of post.likes){
-            //     if (like.user_id === sessionStorage["user_id"]){
-            //         patchLike(like)
-            //     }
-            //     else { 
-            postDislike(post);
+            let patchCheck = false;
+            let thisLike;
+
+            for (const like of post.likes){
+                console.log(like.user_id, parseInt(sessionStorage.user_id, 10));
+                if (like.user_id === parseInt(sessionStorage.user_id, 10)){
+                    patchCheck = true;
+                    console.log(like);
+                    thisLike = like;
+                };
+            };
+            
+            console.log(patchCheck, thisLike);
+
+            if (patchCheck === false){
+                document.getElementById(`${post.id}dislike`).innerHTML++;
+                postDislike(post);
+            } else {
+                if(thisLike.agree === true){
+                    document.getElementById(`${post.id}like`).innerHTML--;
+                    document.getElementById(`${post.id}dislike`).innerHTML++;
+                };
+                patchDislike(thisLike);
+                thisLike.agree = false
+            };
         } else {
             alert('Must be logged in to dislike a post.');
         };
@@ -414,18 +452,34 @@ function postDislike(post) {
 };
 
 
-// function patchLike(like){
-//     fetch(`${likesURL}${like.id}`, {
-//         method: "PATCH",
-//         headers: {
-//             "Content-type": "application/json",
-//             Accept: "application/json"
-//         },
-//         body: JSON.stringify({
-//             agree: true,
-//             disagree: false
-//         })
-//     })
-//     .then(response => response.json())
-//     .then(json => console.log(json))
-// };
+function patchLike(like){
+    fetch(`${likesURL}${like.id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-type": "application/json",
+            Accept: "application/json"
+        },
+        body: JSON.stringify({
+            agree: true,
+            disagree: false
+        })
+    })
+    .then(response => response.json())
+    .then(json => console.log(json))
+};
+
+function patchDislike(like){
+    fetch(`${likesURL}${like.id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-type": "application/json",
+            Accept: "application/json"
+        },
+        body: JSON.stringify({
+            agree: false,
+            disagree: true
+        })
+    })
+    .then(response => response.json())
+    .then(json => console.log(json))
+};
